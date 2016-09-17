@@ -27,12 +27,6 @@ PImage target;
 
 void setup() {
   size(1500, 900);
-  target = loadImage("target.png");
-  for (int i = 0; i < target.pixels.length; i++) {
-    if (target.pixels[i] != 0) {
-      target.pixels[i] = #CC0000;
-    }
-  }
   //creates initial population
   for (int i = 0; i < sheepNum; i++) {
     sheeps.add(new Sheep(rand(0, width), rand(20, height), i));
