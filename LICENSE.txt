@@ -1,4 +1,4 @@
-Copyright © 2016 Kyle Hennig and Alex Rostron.
+Copyright © 2016-2017 Kyle Hennig and Alex Rostron.
 All Rights Reserved.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
