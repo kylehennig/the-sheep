@@ -13,7 +13,7 @@ ArrayList<Sheep> natality = new ArrayList<Sheep>();
 ArrayList<Sheep> mortality = new ArrayList<Sheep>();
 //pond specs
 int waterX = 300;
-int waterY = 300;
+int waterY = 300; 
 int waterSize = 325; //diameter
 //counters
 int sheepId;

@@ -52,7 +52,9 @@ public class Delta {
       } 
           // we gonna make a theory now
     }
-  }//end constructor method
+    
+    
+}//end constructor method
 
   private void dSurr(boolean[] init, boolean[] fin) {
     for (int i = 0; i < fin.length; i++) {

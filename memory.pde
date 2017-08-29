@@ -8,6 +8,7 @@ public class Memory {
   int babies; 
   boolean[] surroundings;
   int action; 
+  int id; 
 
   static final int SHEEP = 0;
   static final int WOLF = 1;
@@ -17,6 +18,7 @@ public class Memory {
   public Memory(Sheep sheep) {
     //save everything the sheep should remember at a time
     this.action = sheep.action; 
+    this.id = sheep.id; 
     this.x = sheep.sheepX;
     this.y = sheep.sheepY;
     this.hp = sheep.hp;
@@ -52,6 +54,11 @@ public class Memory {
         break;
       }
     }
+    
+    if(this.id == 19){// display sheep 19's memories 
+      println("Sheep: "+surroundings[0]+" Wolf: "+surroundings[1]+" Lake: "+surroundings[2]+" action: "+action+" hp: "+hp+" water: "+water+" babies: "+babies); 
+    }
+    
   }
 
   //utility methods

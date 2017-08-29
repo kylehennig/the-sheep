@@ -105,6 +105,12 @@ public class Sheep {
 
   void drawSheep() {
     if (id == 19) {
+      
+      
+      
+   
+      
+      
       colour = color(0);
     }
     fill(colour);
