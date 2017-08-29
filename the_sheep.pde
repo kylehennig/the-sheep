@@ -25,8 +25,12 @@ int avgx = 0;
 int avgy = 0;
 PImage target;
 
+final static int WINDOW_WIDTH = 1500;
+final static int WINDOW_HEIGHT = 900;
+
 void setup() {
-  size(1500, 900);
+  surface.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+  pixelDensity(displayDensity());
   //creates initial population
   for (int i = 0; i < sheepNum; i++) {
     sheeps.add(new Sheep(rand(0, width), rand(20, height), i));
