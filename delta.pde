@@ -20,7 +20,6 @@ public class Delta {
   public Delta(Memory memory1, Memory memory2, Sheep sheep) {
     this.id = sheep.id; 
     action = memory1.action; 
-    //might be taking in the wrong action RN 
     dHP = memory2.hp - memory1.hp;
     dWater = memory2.water - memory1.water;
     dBabies = memory2.babies - memory1.babies;
@@ -28,12 +27,10 @@ public class Delta {
     y = memory2.y; 
     surrFin = memory2.surroundings; 
     surrIn = memory1.surroundings;
-    dSurr(surrIn, surrFin); 
-    //vars set
+    //sheep data saved
+    
+    dSurr(surrIn, surrFin); //counted number of changes in two memories 
 
-    //if (dSurrNum != 0 || dHP != 0 || dWater != 0 || dBabies != 0) {
-    //  changed = true;
-    //}
 
     if (dSurrNum != 0) {
       changed = 0;
@@ -54,7 +51,7 @@ public class Delta {
       if (changed > 0) {
         insert(new Theory(changed, sheep.deltas), sheep.theories);//7,8,9,10
       } 
-      //******************************      // we gonna make a theory now
+          // we gonna make a theory now
     }
   }//end constructor method
 

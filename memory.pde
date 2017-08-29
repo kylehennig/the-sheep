@@ -25,22 +25,25 @@ public class Memory {
     //check surroundings
     surroundings = new boolean[3];
     sheep.colour = color(20, 228, 78);
+    
+    //if it can see a sheep
     for (Sheep sheep2 : sheeps) {
       if (sheep == sheep2) {
         continue;
       }
-      //if it can see a sheep
       if (circlesOverlap(x, y, Sheep.fov / 2, sheep2.sheepX, sheep2.sheepY, Sheep.size / 2)) {
         sheep.colour = color(255, 255, 255);
         surroundings[SHEEP] = true;
         break;
       }
     }
+    
     //if it can see the lake
     if (circlesOverlap(x, y, Sheep.fov / 2, waterX, waterY, waterSize / 2)) {
       sheep.colour = color(#54F7F7);
       surroundings[LAKE] = true;
     }
+    
     //if it can see a wolf
     for (Wolf wolf : wolves) {
       if (circlesOverlap(x, y, Sheep.fov / 2, wolf.wolfX, wolf.wolfY, Wolf.size / 2)) {
