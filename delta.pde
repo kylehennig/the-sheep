@@ -4,7 +4,8 @@ public class Delta {
   int dHP;
   int dWater;
   int dBabies; 
-  int changed = -1;
+  boolean changed = false;
+  Theory.Effect effect = Theory.Effect.NO_EFFECT;
   int action; 
 
   boolean[] surrIn;
@@ -30,26 +31,24 @@ public class Delta {
     //sheep data saved
     
     dSurr(surrIn, surrFin); //counted number of changes in two memories 
-
-
     if (dSurrNum != 0) {
-      changed = 0;
+      changed = true;
     }
 
     if (dHP < 0) {
-      changed = Theory.hpDown;
+      effect = Theory.Effect.HP_DOWN;
     } else if (dWater > 0) {
-      changed = Theory.waterUp;
+      effect = Theory.Effect.WATER_UP;
     } else if (dBabies > 0) {
-      changed = Theory.babiesUp;
+      effect = Theory.Effect.BABIES_UP;
     }
 
     //minimum value to return a change in memory
-    if (changed != -1) {
+    if (changed) {
       insert(this, sheep.deltas);
       //sheep.deltas.add(this);
-      if (changed > 0) {
-        insert(new Theory(changed, sheep.deltas), sheep.theories);//7,8,9,10
+      if (effect != Theory.Effect.NO_EFFECT) {
+        insert(new Theory(effect, sheep.deltas), sheep.theories);//7,8,9,10
       } 
           // we gonna make a theory now
     }

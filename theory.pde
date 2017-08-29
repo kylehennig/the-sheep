@@ -1,32 +1,34 @@
-static class Theory {
-  //static final String[] stuff = {
-  //  "NO_CAUSE", 
-  //  "SHEEP_IN", 
-  //  "SHEEP_OUT", 
-  //  "WOLF_IN", 
-  //  "WOLF_OUT", 
-  //  "LAKE_IN", 
-  //  "LAKE_OUT", 
-  //  "HP_DOWN", 
-  //  "WATER_UP", 
-  //  "BABIES_UP"
-  //};
-  //refer to sheep for action causes
-  static final int noCause = 0;
-  static final int sheepIn = 1;
-  static final int sheepOut = 2;
-  static final int wolfIn = 3;
-  static final int wolfOut = 4;
-  static final int lakeIn = 5;
-  static final int lakeOut = 6;
-  //effects
-  static final int hpDown = 7;
-  static final int waterUp = 8;
-  static final int babiesUp = 9;
+static class Theory { 
+  public static enum Cause {
+    NO_CAUSE(0), 
+      SHEEP_IN(1), 
+      SHEEP_OUT(2), 
+      WOLF_IN(3), 
+      WOLF_OUT(4), 
+      LAKE_IN(5), 
+      LAKE_OUT(6);
+
+    public final int id;
+    private Cause(int id) {
+      this.id = id;
+    }
+  }
+
+  public static enum Effect {
+    NO_EFFECT(0), 
+      HP_DOWN(7), 
+      WATER_UP(8), 
+      BABIES_UP(9);
+
+    public final int id;
+    private Effect(int id) {
+      this.id = id;
+    }
+  }
 
   int significance;
-  int cause;
-  int effect;
+  Cause cause;
+  Effect effect;
   boolean good;
 
   int id;
@@ -34,16 +36,16 @@ static class Theory {
 
   boolean surrIn[];
 
-  public Theory(int effect, ArrayList<Delta> deltas) {
+  public Theory(Effect effect, ArrayList<Delta> deltas) {
     this.id = deltas.get(0).id; 
     Delta lastMemory = deltas.get(deltas.size() - 1);
     this.action = lastMemory.action;
     this.surrIn = lastMemory.surrIn;
 
-    int cause = 0;
+    Cause cause = Cause.NO_CAUSE;
     for (int i = deltas.size() - 1; i >= 0; i--) {
       cause = findCause(deltas.get(i));
-      if (cause != 0) {
+      if (cause != Cause.NO_CAUSE) {
         break;
       }
     }
@@ -52,11 +54,11 @@ static class Theory {
     this.effect = effect;
 
     switch (effect) {
-    case hpDown:
+    case HP_DOWN:
       good = false;
       break;
-    case waterUp:
-    case babiesUp:
+    case WATER_UP:
+    case BABIES_UP:
       good = true;
       break;
     default:
@@ -64,30 +66,30 @@ static class Theory {
     }
   }
 
-  int findCause(Delta d) {
+  Cause findCause(Delta d) {
     if (d.dSurr[Memory.SHEEP]) {
       if (d.added[Memory.SHEEP]) {
-        return sheepIn;
+        return Cause.SHEEP_IN;
       } else {
-        return sheepOut;
+        return Cause.SHEEP_OUT;
       }
     }
     if (d.dSurr[Memory.WOLF]) {
       if (d.added[Memory.WOLF]) {
-        return wolfIn;
+        return Cause.WOLF_IN;
       } else {
-        return wolfOut;
+        return Cause.WOLF_OUT;
       }
     }
     if (d.dSurr[Memory.LAKE]) {
       if (d.added[Memory.LAKE]) {
-        return lakeIn;
+        return Cause.LAKE_IN;
       } else {
-        return lakeOut;
+        return Cause.LAKE_OUT;
       }
     }
     //no cause
-    return 0;
+    return Cause.NO_CAUSE;
   }
 
   void printTheory() {
