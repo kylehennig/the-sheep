@@ -56,7 +56,7 @@ public class Memory {
     }
     
     if(this.id == 19){// display sheep 19's memories 
-      println("Sheep: "+surroundings[0]+" Wolf: "+surroundings[1]+" Lake: "+surroundings[2]+" action: "+action+" hp: "+hp+" water: "+water+" babies: "+babies); 
+      System.out.printf("Sheep: %s, Wolf: %s, Lake: %s, Action: %s, HP: %s, Water: %s, Babies: %s\n", surroundings[0], surroundings[1], surroundings[2], action, hp, water, babies);
     }
     
   }
