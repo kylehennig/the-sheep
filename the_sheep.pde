@@ -1,4 +1,4 @@
-boolean smartSheep = true;
+boolean smartSheep = false;
 int sheepNum = 50;
 int wolfNum = 20;
 int day = 0;
@@ -18,8 +18,9 @@ int waterSize = 325; //diameter
 //counters
 int sheepId;
 String version = "1.0.1";
-int mode = 0; // 0 for normal, 1 for graphing
-int[][] averages = new int[200][50];
+int mode = 1; // 0 for normal, 1 for graphing
+int sampleSize = 150; 
+int[][] averages = new int[200][sampleSize];
 // wolf target
 int avgx = 0;
 int avgy = 0;
@@ -108,7 +109,7 @@ void draw() {
 //end draw
 
 void graphMode() {
-  for (int z = 0; z < 50; z++) {
+  for (int z = 0; z < sampleSize; z++) {
     day = 0;
     time = timeMax;
     sheeps = new ArrayList<Sheep>();
@@ -177,7 +178,7 @@ void graphMode() {
     for (int pop : day) {
       average += pop;
     }
-    println(average / 50.0);
+    println(average / sampleSize);
   }
 }
 

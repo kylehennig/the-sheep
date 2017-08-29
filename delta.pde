@@ -54,7 +54,7 @@ public class Delta {
     }
     
     if(this.id == 19){
-      println("delta Hp "+this.dHP+" delta water: "+this.dWater+" delta babies: "+this.dBabies+"                                anything change?"+ changed); 
+      //println("delta Hp "+this.dHP+" delta water: "+this.dWater+" delta babies: "+this.dBabies+" anything change?"+ changed); 
     }
     
 }//end constructor method
