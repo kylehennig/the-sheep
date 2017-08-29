@@ -23,7 +23,6 @@ int[][] averages = new int[200][50];
 // wolf target
 int avgx = 0;
 int avgy = 0;
-PImage target;
 
 final static int WINDOW_WIDTH = 1500;
 final static int WINDOW_HEIGHT = 900;
